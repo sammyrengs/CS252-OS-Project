@@ -3,9 +3,9 @@
 #include <pthread.h>
 using namespace std;
 
-#define N 12 //size of array to be sorted
+#define N 8 //size of array to be sorted
 
-int unsorted_arr[] = {78, 3, 6, 91, 1, 43, 26, 54, 12, 39, 81, 66};
+int unsorted_arr[] = {78, 3, 6, 91, 1, 43, 26, 54};
 int sorted_arr[N];
 
 //sorting params
@@ -90,14 +90,11 @@ int main()
     merge->second_start = N/2;
     merge->second_end = N;
 
-    //creating the pthreads pthread_create(pthread_t, pthread_attr(NULL, pthread function, copy of struct for pthread))
-    pthread_create(&first_thread, NULL, sorting, (void *)first_half);
+    pthread_create(&first_thread, NULL, sorting, (void *)first_half); //creating the pthread pthread_create(pthread_t, pthread_attr(NULL, pthread function, copy of struct for pthread))
+    pthread_join(first_thread,NULL); //waiting for the thread to exit
     pthread_create(&second_thread, NULL, sorting, (void *)second_half);
-    pthread_create(&merging_thread,NULL, merging, (void *)merge);
-    
-    //wating for threads to exit
-    pthread_join(first_thread,NULL);
     pthread_join(second_thread,NULL);
+    pthread_create(&merging_thread,NULL, merging, (void *)merge);
     pthread_join(merging_thread,NULL);
     
 
