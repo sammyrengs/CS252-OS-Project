@@ -91,8 +91,8 @@ int main()
     merge->second_end = N;
 
     pthread_create(&first_thread, NULL, sorting, (void *)first_half); //creating the pthread pthread_create(pthread_t, pthread_attr(NULL, pthread function, copy of struct for pthread))
-    pthread_join(first_thread,NULL); //waiting for the thread to exit
     pthread_create(&second_thread, NULL, sorting, (void *)second_half);
+    pthread_join(first_thread,NULL); //waiting for the thread to exit
     pthread_join(second_thread,NULL);
     pthread_create(&merging_thread,NULL, merging, (void *)merge);
     pthread_join(merging_thread,NULL);
