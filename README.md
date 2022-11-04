@@ -19,8 +19,8 @@ in the question. All the code files have been tested on Ubuntu.
 ## Execution:
 The file can be executed on Linux by entering the following commands:  
       ```
-      g++ ch4-project2.cpp -o ch4-project2 -lpthread    
-      ./ch4-project2`
+      g++ ch4-project2.cpp -o ch4-project2 -lpthread      
+      ./ch4-project2
       ```
 ## Screenshots from my terminal:
 ![Terminal Image](/images/terminal-img.jpeg)
